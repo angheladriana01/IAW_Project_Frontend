@@ -1,0 +1,18 @@
+<div class="form-container">
+  <h2>Adaugă Categorie</h2>
+  <form (ngSubmit)="addCategory()">
+    <div class="form-group">
+      <label for="name">Nume Categorie</label>
+      <input
+        id="name"
+        [(ngModel)]="category.name"
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Introduceți numele categoriei"
+        required
+      />
+    </div>
+    <button type="submit" class="btn-submit">Adaugă Categorie</button>
+  </form>
+</div>

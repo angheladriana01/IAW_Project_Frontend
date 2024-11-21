@@ -1,0 +1,32 @@
+<div class="home-container">
+  <aside class="categories-sidebar">
+    <h2>Categorii</h2>
+    <ul>
+      <li (click)="getAllProducts()" [class.active]="showAllProducts">Toate Produsele</li>
+      <li
+        *ngFor="let category of categories"
+        (click)="filterProducts(category.id)"
+        [class.active]="!showAllProducts && products[0]?.category?.id === category.id"
+      >
+        {{ category.name }}
+      </li>
+    </ul>
+  </aside>
+
+  <div class="products-section">
+    <h2>Produse</h2>
+    <div class="products-grid">
+      <div *ngFor="let product of products" class="product-card">
+        <img
+          *ngIf="product.image"
+          [src]="'data:image/jpeg;base64,' + product.image"
+          alt="{{ product.name }}"
+          class="product-image"
+        />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.price | currency:'RON':'symbol' }}</p>
+        <a [routerLink]="'/product/' + product.id" class="view-details-btn">Detalii</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="form-container">
+  <h2>Adaugă Produs</h2>
+  <form (ngSubmit)="addProduct()" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Nume Produs</label>
+      <input
+        id="name"
+        [(ngModel)]="product.name"
+        name="name"
+        type="text"
+        class="form-control"
+        placeholder="Introduceți numele produsului"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Preț</label>
+      <input
+        id="price"
+        [(ngModel)]="product.price"
+        name="price"
+        type="number"
+        class="form-control"
+        placeholder="Introduceți prețul produsului"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descriere</label>
+      <textarea
+        id="description"
+        [(ngModel)]="product.description"
+        name="description"
+        class="form-control"
+        placeholder="Introduceți o descriere pentru produs"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categorie</label>
+      <select
+        id="category"
+        [(ngModel)]="product.categoryId"
+        name="categoryId"
+        class="form-control"
+        required
+      >
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="supplier">Furnizor</label>
+      <input
+        id="supplier"
+        [(ngModel)]="product.supplier"
+        name="supplier"
+        type="text"
+        class="form-control"
+        placeholder="Introduceți numele furnizorului"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stoc</label>
+      <input
+        id="stock"
+        [(ngModel)]="product.stock"
+        name="stock"
+        type="number"
+        class="form-control"
+        placeholder="Introduceți cantitatea în stoc"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="image">Încarcă Imagine</label>
+      <input
+        id="image"
+        type="file"
+        (change)="onFileSelected($event)"
+        class="form-control"
+      />
+    </div>
+
+    <button type="submit" class="btn-submit">Adaugă Produs</button>
+  </form>
+</div>
